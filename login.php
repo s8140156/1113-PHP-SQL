@@ -13,8 +13,8 @@ $sql="select count(*) from users where `acc`=`$acc` && `$pw`";
 $user=$pdo->query($sql)->fetchColumn();
 // print_r($user);
 // 確認傳回的資訊是甚麼 返回該筆資料中指定欄位的資料，$n為欄位的索引值(0,1,2…)
-echo $sql;
-exit();
+// echo $sql;
+// exit();
 // 以上是檢查機制 看自己sql寫了甚麼
 // exit();是強制php執行到這邊
 
