@@ -39,7 +39,8 @@
 				}else{
 				?>
                 <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
-                <a href="login.php" class="btn btn-success mx-2">登入</a>
+                <a href="login_form.php" class="btn btn-success mx-2">登入</a>
+                
                 <?php
 				}
 				?>

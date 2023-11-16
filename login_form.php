@@ -22,6 +22,7 @@
 					echo $_GET['error'];
 					echo "</span>";
 				}
+                // 如果有偵測接收到GET錯誤訊息 就顯示紅色錯誤訊息提示
 			?>
             <div class="row">
                 <div class="mb-3 col-4 m-auto">
