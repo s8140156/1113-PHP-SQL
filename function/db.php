@@ -10,7 +10,18 @@ function all($table=null,$where=''){
 	$pdo=new PDO($dsn,'root','');
 
 	if(isset($table) && !empty($table)){
-		$sql="select * from `$table` $where";
+
+		if(is_array($where)){
+
+			if(!empty($where)){
+				foreach($where as $col => $value){
+					$tmp[]="`$col`='$value'";
+			}
+			$sql="select * from `$table` where" .join(" && ",$tmp);
+		}else{
+			$sql="select * from `$table`;
+		}else{
+			$sql="select * from `$table` $where";
 		// echo $sql;
 		// exit();
 		$rows=$pdo->query($sql)->fetchAll();
