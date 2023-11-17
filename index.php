@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php 
+include_once "./include/connect.php";
+// session_start();
+// 若已加include_once 但session_start沒有關 通常會在畫面出現notice顯示重複執行
+?>
 <!-- 確認哪些網頁需要session介入 然後再一開頭就宣告執行 -->
 <!-- session_start()函數用來啟動或恢復使用者的資訊，
 因為網頁可能需要使用session來保持使用者的登入狀態。 -->

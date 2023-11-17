@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php 
+include_once "./include/connect.php";
+// session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +50,8 @@
     <div class="container">
         <h1>使用者資料</h1>
         <?php
-				$dsn="mysql:host=localhost;charset=utf8;dbname=member";
-				$pdo=new PDO($dsn,'root','');
+				// $dsn="mysql:host=localhost;charset=utf8;dbname=member";
+				// $pdo=new PDO($dsn,'root','');
 				$sql="select * from users where `acc`='{$_SESSION['user']}'";
 				$user=$pdo->query($sql)->fetch();
 				// 要撈出已註冊的會員資料 這邊假設是acc是獨一性 不會重複 往後在寫時 需要獨一的值來辨識

@@ -2,9 +2,12 @@
 <!-- add_user.php只做接收表單 做完動作會回到首頁或其他頁面 -->
 
 <?php
-$dsn="mysql:host=localhost;charset=utf8;dbname=member";
-$pdo=new PDO($dsn,'root','');
+
+include_once "./include/connect.php";
+// $dsn="mysql:host=localhost;charset=utf8;dbname=member";
+// $pdo=new PDO($dsn,'root','');
 //設定資料庫連線by PDO
+
 $acc=htmlspecialchars(trim($_POST['acc']));
 // 資料清洗 data wash/clean, 檢查機制
 // 用特殊function, or內建程式 去清除特殊字元' / _變成字串處理

@@ -1,13 +1,15 @@
 <?php
-session_start();
+
+include_once "./include/connect.php";
+// session_start();
 
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
 // 從login_form會員填寫的資料 method:POST
 // 接收到的資料最好先做資料清洗 設變數接收資料
 
-$dsn="mysql:host=localhost;charset=utf8;dbname=member";
-$pdo=new PDO($dsn,'root','');
+// $dsn="mysql:host=localhost;charset=utf8;dbname=member";
+// $pdo=new PDO($dsn,'root','');
 // 設定資料庫連線 與資料庫比對會員資料
 
 // $sql="select * from users where `acc`='$acc' && `pw`='$pw'";
