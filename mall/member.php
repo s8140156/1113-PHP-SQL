@@ -34,6 +34,9 @@ include_once "./include/connect.php";
                 echo "<a href='logout.php' class='btn btn-info mx-2'>登出</a>";
                 echo "<a href='member.php' class='btn btn-success mx-2'>會員中心</a>";
             } else {
+                echo $_SESSION['error']="沒有登入相關驗證，非法登入";
+                // header('location:index.php');
+                // unset($_SESSION['user']);
             ?>
             <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
             <a href="login_form.php" class="btn btn-success mx-2">登入</a>
