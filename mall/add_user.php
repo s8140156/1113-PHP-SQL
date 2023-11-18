@@ -16,7 +16,7 @@ $acc=htmlspecialchars(trim($_POST['acc']));
 // 2. function htmlspecialchars()將html特殊符號改成字串 ex.&=>&amp;
 // 做完清理後 才把變數放到sql去執行, 注意是每個變數都要做這樣的清理
 
-// 增sql語法：新增資料表欄位, 值是$_POST傳過來的喔
+// 增sql語法："新增"資料表欄位, 值是$_POST傳過來的喔
 $sql="insert into `users`(`acc`,`pw`,`name`,`email`,`address`) 
                    values('{$acc}','{$_POST['pw']}','{$_POST['name']}','{$_POST['email']}','{$_POST['address']}')";
                 //欄位是用``; 值使用''; 但這邊因為是接收$_POST傳來的值會有包夾''''情形 
