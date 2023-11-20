@@ -1,6 +1,6 @@
 <?php
 
-include_once "./include/connect.php";
+include_once "../include/connect.php";
 // session_start();
 
 $acc=$_POST['acc'];
@@ -15,7 +15,8 @@ $pw=$_POST['pw'];
 // $sql="select * from users where `acc`='$acc' && `pw`='$pw'";
 // 從資料庫的users資料表找出 `acc`欄位與post接收到的$acc && $acc
 // 請注意 後面變數的引號是''單引號不是上引號``(因為寫錯造成網頁無法成功登入請留意) 
-$sql="select count(*) from users where `acc`='$acc' && `pw`='$pw'";
+// $sql="select count(*) from users where `acc`='$acc' && `pw`='$pw'";
+
 // 因為已傳指令讓資料庫去找與post傳來的會員資料是否相同 若找到相同資料資料庫其實是回傳整筆資料(全部欄位 包括name, email..)
 // 只要資料庫比對acc與pw一致 至少有一筆資料是正確的 所以用count符合資料的筆數 只要回傳有正確的筆數 比整筆欄位資料回傳有效率
 
@@ -24,8 +25,11 @@ $sql="select count(*) from users where `acc`='$acc' && `pw`='$pw'";
 
 // $user=$pdo->query($sql)->fetch();
 // 根據條件從資料庫撈出一筆
-$user=$pdo->query($sql)->fetchColumn();
+// $user=$pdo->query($sql)->fetchColumn();
+
 // 改使用pdo函式 $pdo->query($sql)->“fetchColumn($n)“算出索引值
+
+$res=total('users',['acc'=>$acc,'pw'=>$pw]);
 
 // print_r($user);
 // 若正確 會回傳Array([count(*)]=>1 [0]=>1) 因為陣列會給出欄位及索引兩個東西 所以使用fetchColumn($n)“指定索引值
@@ -39,13 +43,14 @@ $user=$pdo->query($sql)->fetchColumn();
 // if($user['acc']==$acc && $user['pw']==$pw){
 // 如果資料庫的`acc`與post接收的$acc 與資料庫的`pw`與post接收的$pw一致
 // if($user==1){
-if($user){
+if($res){
+	// 要註記
 	$_SESSION['user']=$acc;
 	// 就把會員資料記在session
-	header("location:index.php");
+	header("location:../index.php");
 	// 並登入成功者轉至index網頁
 }else{
-	header("location:login_form.php?error=帳號密碼錯誤");
+	header("location:../login_form.php?error=帳號密碼錯誤");
 	// 否則則轉址至login_form.php並顯示帳號密碼錯誤訊息
 }
 

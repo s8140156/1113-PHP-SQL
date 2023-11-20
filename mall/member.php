@@ -29,7 +29,7 @@ include_once "./include/connect.php";
             if (isset($_SESSION['user'])) {
                 // 判斷session是否有取得user的訊息資料
                 echo "歡迎光臨" . $_SESSION['user'];
-                echo "<a href='logout.php' class='btn btn-info mx-2'>登出</a>";
+                echo "<a href='./api/logout.php' class='btn btn-info mx-2'>登出</a>";
                 echo "<a href='member.php' class='btn btn-success mx-2'>會員中心</a>";
             } else {
             ?>
@@ -57,14 +57,15 @@ include_once "./include/connect.php";
         }
         // $dsn="mysql:host=localhost;charset=utf8;dbname=member";
         // $pdo=new PDO($dsn,'root','');
-        $sql = "select * from users where `acc`='{$_SESSION['user']}'";
-        $user = $pdo->query($sql)->fetch();
+        // $sql = "select * from users where `acc`='{$_SESSION['user']}'";
+        // $user = $pdo->query($sql)->fetch();
+        $user = find('users',['acc'=>"{$_SESSION['user']}"]);
         // 要撈出已註冊的會員資料 這邊假設是acc是獨一性 不會重複 往後在寫時 需要獨一的值來辨識
         // 這邊已沒有表單過來 要從session撈資料
 
 
         ?>
-        <form action="./update.php" method="post">
+        <form action="./api/update.php" method="post">
             <div>
                 <label for="">帳號:</label>
                 <input type="text" name="acc" id="acc" value="<?= $user['acc']; ?>">
@@ -92,7 +93,7 @@ include_once "./include/connect.php";
 
                 <input type="submit" value="更新">
                 <input type="reset" value="重置">
-                <input type="button" value="消失" onclick="location.href='del_user.php?id=<?=$user['id'];?>'">
+                <input type="button" value="消失" onclick="location.href='./api/del_user.php?id=<?=$user['id'];?>'">
             </div>
 
         </form>

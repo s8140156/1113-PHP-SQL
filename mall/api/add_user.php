@@ -3,7 +3,7 @@
 
 <?php
 
-include_once "./include/connect.php";
+include_once "../include/connect.php";
 // $dsn="mysql:host=localhost;charset=utf8;dbname=member";
 // $pdo=new PDO($dsn,'root','');
 //設定資料庫連線by PDO
@@ -17,16 +17,22 @@ $acc=htmlspecialchars(trim($_POST['acc']));
 // 做完清理後 才把變數放到sql去執行, 注意是每個變數都要做這樣的清理
 
 // 增sql語法：新增資料表欄位, 值是$_POST傳過來的喔
-$sql="insert into `users`(`acc`,`pw`,`name`,`email`,`address`) 
-                   values('{$acc}','{$_POST['pw']}','{$_POST['name']}','{$_POST['email']}','{$_POST['address']}')";
+// $sql="insert into `users`(`acc`,`pw`,`name`,`email`,`address`) 
+//                    values('{$acc}','{$_POST['pw']}','{$_POST['name']}','{$_POST['email']}','{$_POST['address']}')";
                 //欄位是用``; 值使用''; 但這邊因為是接收$_POST傳來的值會有包夾''''情形 
                 // 會造成程式誤判斷行不正確 所以裡面使用{}包住變數
 
-$pdo->exec($sql);
+// $pdo->exec($sql);
+
+insert("users",['acc'=>"{$acc}",'pw'=>"{$_POST['pw']}",'name'=>"{$_POST['name']}",'email'=>"{$_POST['email']}",'address'=>"{$_POST['address']}"]);
+// 這邊要將原' '=>" "
+// 然後就已寫好的function取代先前寫的直觀
+
+
 // 執行sql指令 by PDO連線寫進資料庫 exec()是執行指令沒有回傳資料
 
 // header()指令型式都是字串喔 用""包
-header("Location:index.php");
+header("Location:../index.php");
 
 
 ?>

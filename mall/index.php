@@ -38,7 +38,7 @@ include_once "./include/connect.php";
 				if(isset($_SESSION['user'])){
 					// 判斷session是否有取得user的訊息資料
 					echo "歡迎光臨" . $_SESSION['user'];
-					echo "<a href='logout.php' class='btn btn-info mx-2'>登出</a>";
+					echo "<a href='./api/logout.php' class='btn btn-info mx-2'>登出</a>";
 					echo "<a href='member.php' class='btn btn-info mx-2'>會員中心</a>";
 				}else{
 				?>
