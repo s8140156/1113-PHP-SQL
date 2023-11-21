@@ -9,10 +9,8 @@ include_once "./include/connect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員中心</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 </head>
 
@@ -34,12 +32,9 @@ include_once "./include/connect.php";
                 echo "<a href='./api/logout.php' class='btn btn-info mx-2'>登出</a>";
                 echo "<a href='member.php' class='btn btn-success mx-2'>會員中心</a>";
             } else {
-                echo $_SESSION['error']="沒有登入相關驗證，非法登入";
-                // header('location:index.php');
-                // unset($_SESSION['user']);
             ?>
-            <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
-            <a href="login_form.php" class="btn btn-success mx-2">登入</a>
+                <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
+                <a href="login_form.php" class="btn btn-success mx-2">登入</a>
 
             <?php
             }
@@ -60,9 +55,6 @@ include_once "./include/connect.php";
             unset($_SESSION['msg']);
             echo "</div>";
         }
-        // 這邊是承接當會員編輯後的表單 是否有session訊息 視會員的操作顯示對應的訊息在會員中心裡的會員資料表上
-        // 並要注意這只是show個狀態訊息 所以不需要session一直記著 所以要接著解除unset這個session($_SESSION['msg'])
-
         // $dsn="mysql:host=localhost;charset=utf8;dbname=member";
         // $pdo=new PDO($dsn,'root','');
         // $sql = "select * from users where `acc`='{$_SESSION['user']}'";
@@ -70,6 +62,8 @@ include_once "./include/connect.php";
         $user = find('users',['acc'=>"{$_SESSION['user']}"]);
         // 要撈出已註冊的會員資料 這邊假設是acc是獨一性 不會重複 往後在寫時 需要獨一的值來辨識
         // 這邊已沒有表單過來 要從session撈資料
+
+
         ?>
         <form action="./api/update.php" method="post">
             <div>
@@ -96,21 +90,13 @@ include_once "./include/connect.php";
             </div>
             <div>
                 <input type="hidden" name="id" id="id" value="<?=$user['id'];?>">
-                <!-- type=hidden 把id這個欄位隱藏起來不需給使用者看 但是要傳值 -->
+
                 <input type="submit" value="更新">
-                <!-- type=submit一定觸發form action到指定網頁update.php -->
                 <input type="reset" value="重置">
                 <input type="button" value="消失" onclick="location.href='./api/del_user.php?id=<?=$user['id'];?>'">
             </div>
 
         </form>
-        <!-- <form action="del_user.php" method='post'>
-            <input type="hidden" name="id" id="id" value="<?=$user['id'];?>">
-            <input type="submit" value="消失">
-        </form> -->
-        <!-- 這邊是另一種刪除會員資料方式 由於上面的消失使用type=button沒有功用 所以必須改submit方式 
-        但是表單不能再包表單 需獨立拉出重新建連結至del頁面 但會造成頁面格式醜 案件獨立在外沒有排版 -->
-
     </div>
 
 </body>
