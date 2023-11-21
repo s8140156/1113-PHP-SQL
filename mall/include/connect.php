@@ -67,7 +67,7 @@ function find($table,$id){
 	}else{
 		echo "錯誤:參數的資料型態必須是數字或陣列";
 	}
-	echo 'find=>' .$sql;
+	// echo 'find=>' .$sql;
 	$row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 	return $row;
 	// 找一筆而已 把變數變單數
