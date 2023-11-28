@@ -11,35 +11,39 @@
 </head>
 
 <body>
-	<h2>會員註冊</h2>
-	<form action="./api/add_user.php" method="post">
-		<div>
-			<label for="">帳號:</label>
-			<input type="text" name="acc" id="acc">
-		</div>
-		<div>
-			<label for="">密碼:</label>
-			<input type="password" name="pw" id="pw">
-			<!-- 這邊需要type=password這樣顯示才會隱藏 -->
-		</div>
-		<div>
-			<label for="">姓名:</label>
-			<input type="text" name="name" id="name">
-		</div>
-		<div>
-			<label for="">電子郵件:</label>
-			<input type="text" name="email" id="email">
-		</div>
-		<div>
-			<label for="">居住地:</label>
-			<input type="text" name="address" id="address">
-		</div>
-		<div>
-			<input type="submit" value="送出">
-			<input type="reset" value="重置">
-		</div>
+	<div class="container">
+	<?php include "./include/header.php"; ?>
+		<h2>會員註冊</h2>
+		<form action="./api/add_user.php" method="post">
+			<div>
+				<label for="">帳號:</label>
+				<input type="text" name="acc" id="acc">
+			</div>
+			<div>
+				<label for="">密碼:</label>
+				<input type="password" name="pw" id="pw">
+				<!-- 這邊需要type=password這樣顯示才會隱藏 -->
+			</div>
+			<div>
+				<label for="">姓名:</label>
+				<input type="text" name="name" id="name">
+			</div>
+			<div>
+				<label for="">電子郵件:</label>
+				<input type="text" name="email" id="email">
+			</div>
+			<div>
+				<label for="">居住地:</label>
+				<input type="text" name="address" id="address">
+			</div>
+			<div>
+				<input type="submit" value="送出">
+				<input type="reset" value="重置">
+			</div>
+		</form>
+	<?php include "./include/footer.php"; ?>
 
-	</form>
+	</div>
 </body>
 
 </html>

@@ -13,8 +13,9 @@
 </head>
 
 <body>
-    <h1 class="text-center">會員登入</h1>
     <div class="container">
+        <?php include "./include/header.php"; ?>
+        <h1 class="text-start">會員登入</h1>
         <form action="./api/login.php" method="post">
             <?php
 				if(isset($_GET['error'])){
@@ -35,10 +36,11 @@
                 </div>
                 <div class="mb-3 col-4 m-auto">
                     <input type="submit" value="送出" class="btn btn-primary mx-2">
-                    <input type="reset" value="重置" class="btn btn- mx-2">
+                    <input type="reset" value="重置" class="btn btn-info mx-2">
                 </div>
             </div>
         </form>
+        <?php include "./include/footer.php"; ?>
     </div>
 </body>
 
