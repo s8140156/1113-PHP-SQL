@@ -191,9 +191,9 @@ $User=new DB('users');
 // $rows=$student->total('3');
 // dd($rows);
 
-$student = new DB('dept');
-$rows = $student->find('3');
-dd($rows);
+// $student = new DB('dept');
+// $rows = $student->find('3');
+// dd($rows);
 
 
 
