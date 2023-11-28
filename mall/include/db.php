@@ -5,7 +5,7 @@ session_start();
 class DB
 {
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=school";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=member";
     protected $pdo;
     protected $table;
     // 在宣告成員 不能有運算式or new甚麼...
@@ -71,7 +71,7 @@ class DB
             echo "錯誤:沒有指定的資料表名稱";
         }
     }
-
+// 這個是在算
     function total($id)
     {
         // global $pdo;
@@ -152,7 +152,7 @@ class DB
         return $this->pdo->exec($sql);
     }
 
-    function q($sal)
+    function q($sql)
     {
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -178,6 +178,11 @@ function dd($array)
     echo "</pre>";
 }
 
+$User=new DB('users');
+// 因為在物件導向實務化時，會要先建立該類別的物件 這樣在include各頁面時 要寫多次
+// 所以寫在db.php一併include
+// 通常變數命名會與該資料表有相關
+
 // $student=new DB('students');
 // $rows=$student->all();
 // dd($rows);
@@ -189,5 +194,8 @@ function dd($array)
 $student = new DB('dept');
 $rows = $student->find('3');
 dd($rows);
+
+
+
 
 ?>

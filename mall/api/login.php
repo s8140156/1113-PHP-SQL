@@ -1,6 +1,7 @@
 <?php
 
-include_once "../include/connect.php";
+// include_once "../include/connect.php";
+include_once "../include/db.php";
 // session_start();
 
 $acc=$_POST['acc'];
@@ -29,7 +30,7 @@ $pw=$_POST['pw'];
 
 // 改使用pdo函式 $pdo->query($sql)->“fetchColumn($n)“算出索引值
 
-$res=total('users',['acc'=>$acc,'pw'=>$pw]);
+$res=$User->count(['acc'=>$acc,'pw'=>$pw]);
 
 // print_r($user);
 // 若正確 會回傳Array([count(*)]=>1 [0]=>1) 因為陣列會給出欄位及索引兩個東西 所以使用fetchColumn($n)“指定索引值

@@ -3,12 +3,16 @@
 
 <?php
 
-include_once "../include/connect.php";
+// include_once "../include/connect.php";
+include_once "../include/db.php";
 // $dsn="mysql:host=localhost;charset=utf8;dbname=member";
 // $pdo=new PDO($dsn,'root','');
 //設定資料庫連線by PDO
 
-$acc=htmlspecialchars(trim($_POST['acc']));
+// $acc=htmlspecialchars(trim($_POST['acc']));
+$_POST['acc']=htmlspecialchars(trim($_POST['acc']));
+// 直接以post傳來的資訊清洗後帶回$_POST['acc']
+
 // 資料清洗 data wash/clean, 檢查機制
 // 用特殊function, or內建程式 去清除特殊字元' / _變成字串處理
 // 所有送過來的表單不要立即放進資料庫 建議一定都要檢查機制（原本是在values直接寫接收post資料 設變數提出來 不要直接暴露）
@@ -24,7 +28,13 @@ $acc=htmlspecialchars(trim($_POST['acc']));
 
 // $pdo->exec($sql);
 
-insert("users",['acc'=>"{$acc}",'pw'=>"{$_POST['pw']}",'name'=>"{$_POST['name']}",'email'=>"{$_POST['email']}",'address'=>"{$_POST['address']}"]);
+// insert("users",['acc'=>"{$acc}",'pw'=>"{$_POST['pw']}",'name'=>"{$_POST['name']}",'email'=>"{$_POST['email']}",'address'=>"{$_POST['address']}"]);
+$User->save($_POST);
+// 使用物件導向實體化的執行用法
+// insert與update合併成save()
+// 因為已將db('users')獨立 所以在函式裡不需再寫資料表
+// 然後新增的資料其實就是$_POST所帶來的陣列 所以直接使用$_POST不用再重複寫
+
 // 這邊要將原' '=>" "
 // 然後就已寫好的function取代先前寫的直觀
 
